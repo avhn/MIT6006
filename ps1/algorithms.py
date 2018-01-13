@@ -89,6 +89,7 @@ def algorithm3(problem, bestSeen = None, trace = None):
     cross.extend(crossProduct(range(problem.numRow), [midCol]))
 
     crossLoc = problem.getMaximum(cross, trace)
+    # BUG, greater neighbor could not be in current subproblem
     neighbor = problem.getBetterNeighbor(crossLoc, trace)
 
     # update the best we've seen so far based on this new maximum
@@ -107,7 +108,7 @@ def algorithm3(problem, bestSeen = None, trace = None):
     newBest = sub.getLocationInSelf(problem, bestSeen)
     if not trace is None: trace.setProblemDimensions(sub)
     result = algorithm3(sub, newBest, trace)
-    return problem.getLocationInSelf(sub, result)
+    return problem.getLocationInSelf(sub, result), trace
 
 def algorithm4(problem, bestSeen = None, rowSplit = True, trace = None):
     # if it's empty, we're done 

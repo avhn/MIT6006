@@ -1,9 +1,0 @@
-1-a f1<f2<f4<f3
-1-b f1<f4<f3<f2
-1-c f4<f1<f3<f2
-2-a O(n)
-2-b O(nlogn)
-2-c O(n)
-3-a Yes
-3-b Yes
-3-c 
