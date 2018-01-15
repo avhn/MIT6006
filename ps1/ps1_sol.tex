@@ -443,7 +443,62 @@ Hence, we have a contradiction.
 
 \ifsolution \solution{}
 %%% PROBLEM 5 SOLUTION START %%%
-Write your proof here.
+I wish to show that \texttt{algorithm4}
+will always return a peak,
+as long as the problem is not empty.
+To that end,
+I wish to prove the following two statements:
+
+{\bf 1. If the peak problem is not empty,
+then \texttt{algorithm4} will always return a location.}
+Say that we start with a problem of size $m \times n$.
+The first recursive subproblem examined by \texttt{algorithm4}
+will have dimensions
+$\lfloor m / 2 \rfloor \times n$ or 
+$\left(m - \lfloor m / 2 \rfloor - 1 \right) \times n$.
+It will look for highest number, if not peak mark the coordinate
+greater than it. First function call made through dividing columns
+to decrease problem, every recursive call will divide problem almost
+by $2$ and everytime updates highest number likely to be peak with
+first call's approach, recurs to that number changing between dividing
+columns and rows.
+
+I wish to show that there is no way that this can occur.
+Assume, to the contrary,
+that \texttt{algorithm4} does examine an empty subproblem.
+Just prior to this,
+it must examine a subproblem of size
+$1 \times n$ or $2 \times n$.
+If the problem is of size $1 \times n$,
+then calculating the maximum of the central row
+is equivalent to calculating the maximum of the entire problem.
+Hence, the maximum that the algorithm finds must be a peak,
+and it will halt and return the location.
+If the problem has dimensions $2 \times n$,
+then there are two possibilities:
+either the maximum of the central row is a peak
+(in which case the algorithm will halt and return the location),
+or it has a strictly better neighbor in the other row
+(in which case the algorithm will recurse
+on the non-empty subproblem with dimensions $2 \times (n - \lfloor n / 2 \rfloor - 1 \right)$
+or $2 \times (n - \lfloor n / 2 \rfloor)$), in this situation in the last state which is
+dimensions $2 \times 2$, algorithm will compare last $2$ of $3$ coordinates to 
+determine the peak is real or not to return.
+So \texttt{algorithm4} can never recurse into an empty subproblem,
+and therefore \texttt{algorithm4} must eventually return a location.
+
+{\bf 2. If \texttt{algorithm4} returns a location,
+it will be a peak in the original problem.}
+If \texttt{algorithm4} returns a location $(r_1, c_1)$,
+then that location must have the best value or be greater than another column or row's best value
+in column $c_1$ or row $r_1$. Assume, for the sake of contradiction,
+that $(r_1, c_1)$ is not also a peak within the original problem.
+Then as the location $(r_1, c_1)$ is passed up the chain of recursive calls,
+it must eventually reach a level where it stops being a peak while recurring it's edges.
+At that level, the location $(r_1, c_1)$ must be adjacent to the dividing dimensions as
+a row and a column (where $|x_1 - r_2| = 1$) -and the values must satisfy the inequality and 
+dimension $x_2$ (where $|x_1 - x_2| = 1$) and the values must satisfy the inequality for example
+$val(r_1, c_1) < val(r_1, c_2)$.
 %%% PROBLEM 5 SOLUTION END %%%
 \fi
 
