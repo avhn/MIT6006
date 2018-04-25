@@ -353,9 +353,7 @@ class PriorityQueue:
         return len(self.heap) - 1
 
     def swap(self, index1, index2):
-        temp = self.heap[index1]
-        self.heap[index1] = self.heap[index2]
-        self.heap[index2] = temp
+        self.heap[index1], self.heap[index2] = self.heap[index2], self.heap[index1]
 
     def append(self, key):
         """Inserts an element in the priority queue."""
@@ -397,7 +395,7 @@ class PriorityQueue:
         """
         if len(self.heap) == 1:
             return None
-        if len(self.heap) is 2:
+        elif len(self.heap) is 2:
             return self.heap.pop()
 
         last_index = len(self.heap) - 1

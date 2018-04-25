@@ -98,10 +98,8 @@ class AVLTree(object):
         # find node
         node = self.root
         while node and node.key != key:
-
             if key > node.key:
                 node = node.right
-
             elif key < node.key:
                 node = node.left
 
@@ -130,7 +128,6 @@ class AVLTree(object):
         # if has 1 child
         elif node.right or node.left:
             balancing_node = node.parent
-
             if node.right:
                 child = node.right
             else:
@@ -139,10 +136,8 @@ class AVLTree(object):
             child.parent = node.parent
             if not node.parent:
                 self.root = child
-
             elif node.parent < node:
                 node.parent.right = child
-        
             else:
                 node.parent.left = child
 
@@ -160,7 +155,6 @@ class AVLTree(object):
         balancing_node and self.rebalance(balancing_node)
         node.left, node.right, node.parent = [None] * 3
         return node
-
 
     def lca(self, first_key, last_key):
         """
@@ -266,5 +260,4 @@ class AVLTree(object):
             if x > y:
                 self.rotate_left(y)
             self.rotate_right(z)
-
 
