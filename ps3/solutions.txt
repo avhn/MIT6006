@@ -1,0 +1,62 @@
+1-a 4
+1-b 3
+1-c 3
+1-d 3
+1-e 6
+ l <= x <= h
+ (rank(h) - rank(l)) + 1
+ = rank(h) - rank(l) + 1
+1-f 5 
+ l < x <= h
+ = rank(h) - rank(l)
+1-g 5
+ l <= x < h
+ (rank(h) - 1) - (rank(l) - 1)
+ = rank(h) - rank(l)
+1-h 4
+ l < x < h
+ = rank(h) - 1 - rank(l)
+1-i 4
+1-j 3
+1-k 2
+1-l 3
+1-m 4
+1-n 4
+1-o 3,4,5
+ With AVL Trees, you just insert or delete
+ Final form is not determined by them
+1-p 3
+ 2 * logN + 1 
+ = logN
+1-q 2
+1-r 3
+1-s 8
+1-t 8
+ logN + L + logN = 2logN + L
+ = logN + L
+1-u PROOF
+ We get the root for l and h with LCA(l,h).
+ Leas common ancestor is a intersection point for binding 2 keys, it's an interval.
+ There is 2 situation, there is LCA and there is not at the tree.
+ We imagine there is L and H even if there is, 
+ and search for intersection point which is what we are looking for. 
+ If we say it X. X provides us L <= X <= H condition. Its a key point.
+ Root will crawl through it till it catches the intersection point, 
+ If Node is one step closer to L or H, there will be no tie between them.
+ It will crawl to closest everytime.
+ If crawl bumps to a leaf end, than its not exists; 
+ it returns the leaf which is LCA, it's the least common of imaginary keys.
+ If there is a intersection point a.k.a least common ancestor, it's impossible to miss,
+ because it would meet the condition.
+2-a intersects
+2-b 187590314
+2-c 1,2,4
+2-d 1
+2-e 2
+2-f 4
+2-g 3
+2-h 2
+2-i 2
+2-j <listcomp> from RangeIndex.list
+2-k 20000
+2-l implemented
