@@ -28,8 +28,10 @@ class RollingHash:
     # Updates the hash by removing previtm and adding nextitm.  Returns the updated
     # hash value.
     def slide(self, previtm, nextitm):
-        self.curhash = (self.curhash * self.HASH_BASE) + ord(nextitm)
-        self.curhash -= ord(previtm) * (self.HASH_BASE ** self.seqlen)
+        for i in xrange(len(previtm)):
+            p, n = previtm[i], nextitm[i]
+            self.curhash = (self.curhash * self.HASH_BASE) + ord(n)
+            self.curhash -= ord(p) * (self.HASH_BASE ** self.seqlen)
         return self.curhash
 
 # A simple 2D integer array implementation on top of Python's built-in 1D array.

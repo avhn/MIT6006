@@ -1,0 +1,14 @@
+1-a 4
+1-b 4
+1-c 7
+1-d 
+ If we think O (k) = O (1) theoretically, we would do additional O (m) operations
+ for every 1 operation. So it doesn't work comparing to cost of doing O (m) = O (1)
+ operations every m operations which is exponential. Practically, if k is small
+ using k will cause more collisions instead of preventing them. And would take much
+ more space if k is big; it's inefficient. So instead of constant increase, doubling
+ the table, is more relevant for almost every situation regarding the average cost of
+ time complexity and memory.
+2-a 1
+2-b 4
+3 implemented
