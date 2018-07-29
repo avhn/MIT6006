@@ -1,9 +1,12 @@
-*.pyc
-*.pyo
-__pycache__
-
-*#*
+#*
 *~
 *.swp
 .DS_Store
 .idea*
+
+venv
+
+*.pyc
+*.pyo
+__pycache__
+

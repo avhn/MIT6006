@@ -33,85 +33,104 @@ None.
 
 \newcommand{\answerIa}{ \answer
 %%% PROBLEM 1(a) ANSWER START %%%
-0
+3
 %%% PROBLEM 1(a) ANSWER END %%%
 }
 
 \newcommand{\answerIb}{ \answer
 %%% PROBLEM 1(b) ANSWER START %%%
-0
+3
 %%% PROBLEM 1(b) ANSWER END %%%
 }
 
 \newcommand{\answerIc}{ \answer
 %%% PROBLEM 1(c) ANSWER START %%%
-0
+1
 %%% PROBLEM 1(c) ANSWER END %%%
 }
 
 \newcommand{\answerId}{ \answer
 %%% PROBLEM 1(d) ANSWER START %%%
-0
+4
 %%% PROBLEM 1(d) ANSWER END %%%
 }
 \newcommand{\answerIe}{ \answer
 %%% PROBLEM 1(e) ANSWER START %%%
-0
+3
 %%% PROBLEM 1(e) ANSWER END %%%
 }
 \newcommand{\answerIf}{ \answer
 %%% PROBLEM 1(f) ANSWER START %%%
-0
+2
 %%% PROBLEM 1(f) ANSWER END %%%
 }
 \newcommand{\answerIg}{ \answer
 %%% PROBLEM 1(g) ANSWER START %%%
-0
+3
 %%% PROBLEM 1(g) ANSWER END %%%
 }
 \newcommand{\answerIh}{ \answer
 %%% PROBLEM 1(h) ANSWER START %%%
-0
+3
 %%% PROBLEM 1(h) ANSWER END %%%
 }
 \newcommand{\answerIi}{ \answer
 %%% PROBLEM 1(i) ANSWER START %%%
-0
+4
 %%% PROBLEM 1(i) ANSWER END %%%
 }
 \newcommand{\answerIj}{ \answer
 %%% PROBLEM 1(j) ANSWER START %%%
-0
+2
 %%% PROBLEM 1(j) ANSWER END %%%
 }
 \newcommand{\answerIk}{ \answer
 %%% PROBLEM 1(k) ANSWER START %%%
-0
+4
 %%% PROBLEM 1(k) ANSWER END %%%
 }
 \newcommand{\answerIl}{ \answer
 %%% PROBLEM 1(l) ANSWER START %%%
-0
+8
 %%% PROBLEM 1(l) ANSWER END %%%
 }
 \newcommand{\answerIm}{ \answer
 %%% PROBLEM 1(m) ANSWER START %%%
-0
+6
 %%% PROBLEM 1(m) ANSWER END %%%
 }
 \newcommand{\answerIn}{ \answer
 %%% PROBLEM 1(n) ANSWER START %%%
-0
+6
 %%% PROBLEM 1(n) ANSWER END %%%
 }
 \newcommand{\answerIo}{ \answer
 %%% PROBLEM 1(o) ANSWER START %%%
-0
+7
 %%% PROBLEM 1(o) ANSWER END %%%
 }
 \newcommand{\answerIp}{ \answer
 %%% PROBLEM 1(p) ANSWER START %%%
-Your pseudo-code in latex.
+KTH\_ROOT(A, K, N):
+    \section{B_0 = ONE(N)}
+    \section{i = 0}
+    \section{do}
+    \section{\quad i = i + 1}
+    \section{\quad B_i = ADD(B_{i-1},\ B_{i-1},\ N)}
+    \section{till B[N+1] $>$ 0 or POW(B_i,\ K) >= A}
+    \section{R = ZERO(N)}
+    \section{for j = i - 1 to 0}
+    \section{\quad R' = ADD(R,\ B_i)}
+    \section{\quad if POW(R',\ K) $<$ A:}
+    \section{\qquad R = R'}
+    \section{return R}
+POWER(B, E):
+    \section{P = COPY(B)}
+    \section{i = 0}
+    \section{do i = i + 1}
+    \section{\quad  P = MULTIPLY(P,\ B)}
+    \section{till i $==$ E}
+    \section{return P}
 %%% PROBLEM 1(p) ANSWER END %%%
 }
 
