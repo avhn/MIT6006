@@ -111,26 +111,33 @@ None.
 }
 \newcommand{\answerIp}{ \answer
 %%% PROBLEM 1(p) ANSWER START %%%
-KTH\_ROOT(A, K, N):
-    \section{B_0 = ONE(N)}
-    \section{i = 0}
-    \section{do}
-    \section{\quad i = i + 1}
-    \section{\quad B_i = ADD(B_{i-1},\ B_{i-1},\ N)}
-    \section{till B[N+1] $>$ 0 or POW(B_i,\ K) >= A}
-    \section{R = ZERO(N)}
-    \section{for j = i - 1 to 0}
-    \section{\quad R' = ADD(R,\ B_i)}
-    \section{\quad if POW(R',\ K) $<$ A:}
-    \section{\qquad R = R'}
-    \section{return R}
-POWER(B, E):
-    \section{P = COPY(B)}
-    \section{i = 0}
-    \section{do i = i + 1}
-    \section{\quad  P = MULTIPLY(P,\ B)}
-    \section{till i $==$ E}
-    \section{return P}
+\begin{codebox}
+\Procname{$\proc{KTH\_ROOT}(A, K, N)$}
+\li $B_0 \gets \proc{ONE}(N)$
+\li $i \gets 0$
+\li \Repeat \label{li:kthroot-repeat}
+\li   $i \gets i + 1$
+\li   $\id{B_i} \gets \proc{ADD}(\id{B_{i-1}}, \id{B_{i-1}}, N)}$
+\li \Until $\id{B}[N+1] > 0$ or $\proc{POW}(B_i, K) >= A$
+\li $R \gets \proc{ZERO}(N)$
+\li \For $j \gets i - 1$ \To $0$ \label{li:kth_root-for}
+\li   \Do 
+\li       $R' \gets \proc{ADD}(R, B_i)$
+\li       \If $\proc{POW}(R', K) > A$
+\li         \Then 
+              $R \gets R'$ \label{kth_root-prog}
+            \End
+      \End
+\li \Return $R$
+
+\Procname{$\proc{POWER}(B, E)$}
+\li $P \gets \proc{COPY}(B)$
+\li $i \gets 0$
+\li \Repeat $i \gets i + 1$
+\li   $P \gets \proc{MULTIPLY}(P, B)$
+\li \Until $i \gets E$
+\li \Return $P$
+\end{codebox}
 %%% PROBLEM 1(p) ANSWER END %%%
 }
 
