@@ -256,7 +256,7 @@ class BigNum(object):
     '''
     Slow method for multiplying two numbers w/ good constant factors.
     '''
-    return self.fast_mul(other)
+    # multiplication implementation
 
   def fast_mul(self, other):
     '''
