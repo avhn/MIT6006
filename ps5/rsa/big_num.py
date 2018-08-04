@@ -256,8 +256,26 @@ class BigNum(object):
     '''
     Slow method for multiplying two numbers w/ good constant factors.
     '''
-    # multiplication implementation
+    
+    N = max(len(self.d), len(other.d))
+    result = BigNum.zero(N * 2)
 
+    for i in range(N):
+        carry = Byte.zero()
+
+        for j in range(N):
+            # Do not summon BigNum
+            self_i = (i < len(self.d) and self.d[i]) or Byte.zero()
+            other_j = (j < len(other.d) and other.d[j]) or Byte.zero()
+
+            digit = self_i * other_j + result.d[i + j].word() + carry.word()
+            result.d[i + j] = digit.lsb()
+            carry = digit.msb()
+
+        result.d[i + N] = carry
+
+    return result
+       
   def fast_mul(self, other):
     '''
     Asymptotically fast method for multiplying two numbers.
@@ -310,12 +328,32 @@ class BigNum(object):
     if len(self.d) <= 256 or len(other.d) <= 256:
       return self.slow_divmod(other)
     return self.fast_divmod(other)
-  
+
   def slow_divmod(self, other):
-    '''
-    Slow method for dividing two numbers w/ good constant factors.
-    '''
-    return self.fast_divmod(other)
+      '''
+      Slow method for dividing two numbers w/ good constant factors.
+      '''
+      N = max(len(self.d), len(other.d))
+
+      Q = BigNum.zero(N)
+      R = BigNum(self.d)
+      S = [BigNum(other.d)]
+
+      i = 0
+      while S[i] <= self:
+          # Si[N+1] < 0 case in algorithm isn't necessary
+          # BigNum is defined with N digits
+
+          i += 1
+          S.append(S[i - 1] + S[i - 1])
+
+      for j in range(i - 1, -1, -1):
+          Q += Q
+          if R >= S[j]:
+              R -= S[j]
+              Q += BigNum.one()
+
+      return (Q, R)
 
   def fast_divmod(self, other):
     '''
