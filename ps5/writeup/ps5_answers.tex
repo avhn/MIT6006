@@ -111,33 +111,38 @@ None.
 }
 \newcommand{\answerIp}{ \answer
 %%% PROBLEM 1(p) ANSWER START %%%
+
 \begin{codebox}
 \Procname{$\proc{KTH\_ROOT}(A, K, N)$}
 \li $B_0 \gets \proc{ONE}(N)$
 \li $i \gets 0$
 \li \Repeat \label{li:kthroot-repeat}
 \li   $i \gets i + 1$
-\li   $\id{B_i} \gets \proc{ADD}(\id{B_{i-1}}, \id{B_{i-1}}, N)}$
+\li   $\id{B_i} \gets \proc{ADD}(B_{i-1}, B_{i-1}, N)$
 \li \Until $\id{B}[N+1] > 0$ or $\proc{POW}(B_i, K) >= A$
 \li $R \gets \proc{ZERO}(N)$
 \li \For $j \gets i - 1$ \To $0$ \label{li:kth_root-for}
-\li   \Do 
+        \Do
 \li       $R' \gets \proc{ADD}(R, B_i)$
 \li       \If $\proc{POW}(R', K) > A$
-\li         \Then 
+\li         \Then
               $R \gets R'$ \label{kth_root-prog}
             \End
       \End
 \li \Return $R$
+\end{codebox}
 
+\begin{codebox}
 \Procname{$\proc{POWER}(B, E)$}
 \li $P \gets \proc{COPY}(B)$
 \li $i \gets 0$
-\li \Repeat $i \gets i + 1$
+\li \Repeat
+\li   $i \gets i + 1$
 \li   $P \gets \proc{MULTIPLY}(P, B)$
 \li \Until $i \gets E$
 \li \Return $P$
 \end{codebox}
+
 %%% PROBLEM 1(p) ANSWER END %%%
 }
 
@@ -172,7 +177,7 @@ None.
 %%% PROBLEM 2(f) ANSWER END %%%
 }
 
-\newcommand{\answerIIIa}{ \answer 
+\newcommand{\answerIIIa}{ \answer
 %%% PROBLEM 3(a) ANSWER START %%%
 fast\_mul
 %%% PROBLEM 3(a) ANSWER END %%%
