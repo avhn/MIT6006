@@ -10,3 +10,6 @@ venv
 *.pyo
 __pycache__
 
+*.aux
+*.log
+
