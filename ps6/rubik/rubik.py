@@ -94,6 +94,10 @@ the color at position j moves to position i.
 ### Permutation operations
 ####################################################
 
+import sys
+if sys.version_info > (2, 7):
+    xrange = range
+
 def perm_apply(perm, position):
     """
     Apply permutation perm to a list position (e.g. of faces).
@@ -221,7 +225,7 @@ def input_configuration():
     position[18] = eval(cubie)
     position[19] = eval(cubie[1:] + cubie[0])
     position[20] = eval(cubie[2] + cubie[:2])
-    print """We already know cubie #7, so we're done."""
+    print ("""We already know cubie #7, so we're done.""")
     cubie = 'oyb'
     position[21] = eval(cubie)
     position[22] = eval(cubie[1:] + cubie[0])
