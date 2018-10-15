@@ -1,0 +1,26 @@
+* Problem 6-1
+Find strongest connection from u to v with vagueness of k at O(kE + V).
+Connection(u, v, k) uses Breath First Search and a hashtable to reach
+this time complexity.
+
+Connection(u, v, k):
+    define 
+        hashtable
+        queue
+        connection to None
+
+    add u to queue
+    set u to 1 at hashtable
+
+    for i=0 to k do
+        pop user from left of queue
+        for every friend of user do
+            append friend to queue
+
+            hashtable[friend] = hashtable[user] * EdgeRank(user, friend)
+
+            if friend is v and
+                if connection is None or hashtable[friend] > hashtable[connection] do
+                    connection = friend
+
+    return hashtable[connection]
