@@ -1,4 +1,4 @@
-* Problem 6-1
+** Problem 6-1
 Find strongest connection from u to v with vagueness of k at O(kE + V).
 Connection(u, v, k) uses Breath First Search and a hashtable to reach
 this time complexity.
@@ -24,3 +24,31 @@ Connection(u, v, k):
                     connection = friend
 
     return hashtable[connection]
+
+
+** Problem 6-2
+* a) Installation order can be done with topological sort at O(V + E) time.
+Using a set, a queue and depth-first search for every library.
+
+
+* b)
+Depth subcycle will be called V times and recurse E times. Therefore O(V + E).
+Searching something in set is average of O(1). Queue is LIFO.
+
+Depth(library, visited, queue):
+    if library is not in visited do
+        add library to visited
+        for every dependency of library do
+            Depth(dependency, visited, queue)
+        add library to queue
+
+
+Topologicalsort(V):
+    define
+        queue
+        visited is set
+
+    for every library in V do
+        Depth(library, visited, queue)
+
+    return queue
