@@ -195,7 +195,45 @@ class PathFinder(object):
             A tuple: (the path as a list of nodes from source to destination, 
                       the number of visited nodes)
         """
-        return NotImplemented 
+
+        min_heap = PriorityQueue()
+        for node in nodes:
+            # initilize node
+            node.parent = None
+            node.key = NodeDistancePair(node, float('inf'))
+            if node is source:
+                node.key.distance = 0
+
+            # insert to priority queue
+            min_heap.insert(node.key)
+
+        # visit every node
+        visited = set()
+        while 0 < len(min_heap):
+            current = min_heap.extract_min()
+            for adj in current.node.adj:
+                if adj in visited: continue
+
+                new_distance = current.distance + weight(current.node, adj)
+                if adj.key.distance > new_distance: 
+                    # relax
+                    adj.key.distance = new_distance
+                    adj.parent = current.node
+
+                    # realign adj key to reach
+                    min_heap.decrease_key(adj.key)
+
+            visited.add(current.node)
+
+        # find path
+        path = list()
+        while destination:
+            path.append(destination)
+            destination = destination.parent
+        path.reverse()
+
+        return (path, len(visited))
+
         
     @staticmethod
     def from_file(file, network):
