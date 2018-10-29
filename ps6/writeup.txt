@@ -1,6 +1,6 @@
 ** Problem 6-1
 Find strongest connection from u to v with vagueness of k at O(kE + V).
-Connection(u, v, k) uses Breath First Search and a hashtable to reach
+Connection(u, v, k) uses a modified Breadth First Search and uses a hashtable to reach
 this time complexity.
 
 Connection(u, v, k):
@@ -17,7 +17,10 @@ Connection(u, v, k):
         for every friend of user do
             append friend to queue
 
-            hashtable[friend] = hashtable[user] * EdgeRank(user, friend)
+            weight = hashtable[user] * EdgeRank(user, friend)
+            if hashtable[friend] is exists and hashtable[friend] > weight do
+            	continue
+            hashtable[friend] = weight
 
             if friend is v and
                 if connection is None or hashtable[friend] > hashtable[connection] do
@@ -28,7 +31,7 @@ Connection(u, v, k):
 
 ** Problem 6-2
 * a) Installation order can be done with topological sort at O(V + E) time.
-Using a set, a queue and depth-first search for every library.
+Using a set, a queue and Depth First Search for every library.
 
 
 * b)
