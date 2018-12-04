@@ -5,7 +5,7 @@ import sys
 try:
     from PIL import Image
 except:
-    print 'You do not have PIL (the Python Imaging Library) installed.'
+    print('You do not have PIL (the Python Imaging Library) installed.')
     sys.exit(1)
 
 class SeamError(Exception):
@@ -21,7 +21,7 @@ class ImageMatrix(dict):
         pixels = iter(image.getdata())
         for j in range(self.height):
             for i in range(self.width):
-                self[i,j] = pixels.next()
+                self[i,j] = next(pixels)
 
     def color_seam(self, seam, color=(255,0,0)):
         """Takes a seam (a list of coordinates) and colors it all one

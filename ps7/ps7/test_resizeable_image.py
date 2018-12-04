@@ -17,7 +17,8 @@ class TestImage(unittest.TestCase):
         self.assertEqual(image.height, len(seam), 'Seam wrong size.')
 
         # Make sure the pixels in the seam are properly ocnnected.
-        seam.sort(lambda x,y: cmp(x[1],y[1])) # Sort by height.
+        #seam.sort(lambda x,y: cmp(x[1],y[1])) # Sort by height.
+        seam.sort(key=lambda x: x[1])
         for i in range(1, len(seam)):
             self.assertTrue(abs(seam[i][0]-seam[i-1][0]) <= 1, 'Not a proper seam.')
             self.assertEqual(i, seam[i][1], 'Not a proper seam.')
