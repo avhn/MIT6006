@@ -61,9 +61,10 @@ class ImageMatrix(dict):
 
     def ppm(self):
         """Returns self in (binary) ppm form."""
-        return 'P6 %d %d 255\n' % (self.width, self.height) + \
-            ''.join ([struct.pack('BBB', *self[i,j])
+        return b'P6 %d %d 255\n' % (self.width, self.height) + \
+            b''.join([struct.pack('BBB', *self[i,j])
                       for j in range(self.height) for i in range(self.width)])
+    
     def save_ppm(self, filename):
         """Saves self as a .ppm"""
         f = open(filename, 'wb')
@@ -74,7 +75,8 @@ class ImageMatrix(dict):
         """Displays self in a pop-up window using Tkinter,
         and waits till the user either clicks on or closes the window.
         Saves the image as a temporary ppm file (specified by temp)."""
-        import Tkinter
+        import tkinter as Tkinter
+            
         if Tkinter._default_root:
             root=Tkinter.Toplevel()
         else:
