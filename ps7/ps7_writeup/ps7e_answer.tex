@@ -58,7 +58,24 @@ explain your mistakes.
 \textbf{Answer:}
 
 %%% PROBLEM 2(tE) ANSWER START %%%
-Insert your explanation here.
+Assuming limit is a table.
+
+Algorithm, first of all, updates limit table and set maximum limits regarding
+given amount of cash to calculate every real possibility.
+
+With bottom up approach, builds profit table. For every amount starting from 0,
+calculates best stock to buy until either it's limit is drained or no cash 
+available to buy the stock. This cycle runs till algorithm isn't able to buy
+any stocks or not buying is better.
+
+How limit drains? With every purchase, profit table asks from upper level for
+limit-1'th possibility from table to buy another. If limit equals 0, algorithm
+looks from other stocks' profits for best profit.
+
+Top level of profit table contains just the final profit, just a number.
+So, this does not show how many and which stocks we bought.
+
+
 %%% PROBLEM 2(tE) ANSWER END %%%
 
 \end{problems}

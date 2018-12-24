@@ -53,7 +53,7 @@ None.
 
 \newcommand{\answerIIaPear}{
 %%% PROBLEM 2(a) PEAR ANSWER START %%%
-0
+1
 %%% PROBLEM 2(a) PEAR ANSWER END %%%
 }
 
@@ -77,13 +77,13 @@ None.
 
 \newcommand{\answerIIbPear}{
 %%% PROBLEM 2(b) PEAR ANSWER START %%%
-0
+2
 %%% PROBLEM 2(b) PEAR ANSWER END %%%
 }
 
 \newcommand{\answerIIcDale}{
 %%% PROBLEM 2(c) DALE ANSWER START %%%
-0
+10
 %%% PROBLEM 2(c) DALE ANSWER END %%%
 }
 
@@ -107,91 +107,91 @@ None.
 
 \newcommand{\answerIId}{\solution{
 %%% PROBLEM 2(d) ANSWER START %%%
-0
+4
 %%% PROBLEM 2(d) ANSWER END %%%
 }}
 
 \newcommand{\answerIIe}{\solution{
 %%% PROBLEM 2(e) ANSWER START %%%
-0
+1
 %%% PROBLEM 2(e) ANSWER END %%%
 }}
 
 \newcommand{\answerIIf}{\solution{
 %%% PROBLEM 2(f) ANSWER START %%%
-0
+2
 %%% PROBLEM 2(f) ANSWER END %%%
 }}
 
 \newcommand{\answerIIg}{\solution{
 %%% PROBLEM 2(g) ANSWER START %%%
-0
+3
 %%% PROBLEM 2(g) ANSWER END %%%
 }}
 
 \newcommand{\answerIIh}{\solution{
 %%% PROBLEM 2(h) ANSWER START %%%
-0 0 0
+3 5
 %%% PROBLEM 2(h) ANSWER END %%%
 }}
 
 \newcommand{\answerIIi}{\solution{
 %%% PROBLEM 2(i) ANSWER START %%%
-0
+10
 %%% PROBLEM 2(i) ANSWER END %%%
 }}
 
 \newcommand{\answerIIj}{\solution{
 %%% PROBLEM 2(j) ANSWER START %%%
-0
+10
 %%% PROBLEM 2(j) ANSWER END %%%
 }}
 
 \newcommand{\answerIIk}{\solution{
 %%% PROBLEM 2(k) ANSWER START %%%
-0
+1
 %%% PROBLEM 2(k) ANSWER END %%%
 }}
 
 \newcommand{\answerIIl}{\solution{
 %%% PROBLEM 2(l) ANSWER START %%%
-0
+1
 %%% PROBLEM 2(l) ANSWER END %%%
 }}
 
 \newcommand{\answerIIm}{\solution{
 %%% PROBLEM 2(m) ANSWER START %%%
-0
+7
 %%% PROBLEM 2(m) ANSWER END %%%
 }}
 
 \newcommand{\answerIIn}{\solution{
 %%% PROBLEM 2(n) ANSWER START %%%
-0
+5
 %%% PROBLEM 2(n) ANSWER END %%%
 }}
 
 \newcommand{\answerIIo}{\solution{
 %%% PROBLEM 2(o) ANSWER START %%%
-0
+2
 %%% PROBLEM 2(o) ANSWER END %%%
 }}
 
 \newcommand{\answerIIp}{\solution{
 %%% PROBLEM 2(p) ANSWER START %%%
-0
+5
 %%% PROBLEM 2(p) ANSWER END %%%
 }}
 
 \newcommand{\answerIIq}{\solution{
 %%% PROBLEM 2(q) ANSWER START %%%
-0
+3
 %%% PROBLEM 2(q) ANSWER END %%%
 }}
 
 \newcommand{\answerIIrDale}{
 %%% PROBLEM 2(r) DALE ANSWER START %%%
-0
+1
 %%% PROBLEM 2(r) DALE ANSWER END %%%
 }
 
@@ -209,31 +209,31 @@ None.
 
 \newcommand{\answerIIrPear}{
 %%% PROBLEM 2(r) PEAR ANSWER START %%%
-0
+1 
 %%% PROBLEM 2(r) PEAR ANSWER END %%%
 }
 
 \newcommand{\answerIIsDale}{
 %%% PROBLEM 2(s) DALE ANSWER START %%%
-0
+3
 %%% PROBLEM 2(s) DALE ANSWER END %%%
 }
 
 \newcommand{\answerIIsJCN}{
 %%% PROBLEM 2(s) JCN ANSWER START %%%
-0
+3
 %%% PROBLEM 2(s) JCN ANSWER END %%%
 }
 
 \newcommand{\answerIIsMacroware}{
 %%% PROBLEM 2(s) MACROWARE ANSWER START %%%
-0
+2
 %%% PROBLEM 2(s) MACROWARE ANSWER END %%%
 }
 
 \newcommand{\answerIIsPear}{
 %%% PROBLEM 2(s) PEAR ANSWER START %%%
-0
+1
 %%% PROBLEM 2(s) PEAR ANSWER END %%%
 }
 
@@ -241,10 +241,50 @@ None.
 %%% PROBLEM 2(t) ANSWER START %%%
 \begin{codebox}
 \Procname{$\proc{StockLimited}(\total, \stockCount, \priceStart, \priceEnd, \limit)$}
-\li Insert your pseudocode here.
+\li \For $stock \gets 1$ to $count$ 
+	\Do
+\li 		$limit[stock] = min\{limit[stock],\ total / start[stock]\}$
+    	\End
+\li profit is hashtable
+\li \For $cash \gets 0$ to $total$ 
+	\Do
+\li     		$profit[cash,\ 0,\ 0] \gets cash$
+\li    		 $stock \gets 1$ to $count$
+\li    		\For $l \gets 0$ to $limit[stock]$ \Do
+\li	    		$profit[cash,\ stock,\ l] \gets profit[cash,\ stock - 1,\ limit[stock - 1]]$
+\li	    		\If $start[stock] <= cash$ and $l > 0$ 
+				\Then
+\li	       			$current \gets end[stock] + profit[cash - (l * start[stock]),\ stock,\  l - 1]$
+\li	      	 		$profit[cash,\ stock,\ l] \gets max\{profit[cash,\ stock,\ l],\ current\}$
+   				 \End 
+		\End 
+	\End
+\li \Return \id{profit}[cash,\ count,\ limit[count]]
 \end{codebox}
 
-Remember to analyze your pseudocode as well.
+If we consider a stock's minimum price as \proc{1}, runtime is \proc{O}($total^2 * count$).
+
+Recurrence relation below.
+
+\begin{codebox}
+\Procname{$\id{profit}[c, s, l]$}
+\li    \If $s \gets 0$
+	\Then 
+\li 		$c$
+	\End
+\li    \Else \If $l \gets 0$ or $c < start[s]$
+ 	\Then 
+\li		$profit[c, s - 1, limit[s - 1]]$
+	\End
+\li    \Else 
+	\Then
+\li 		$max\{profit[c, s - 1, limit[s - 1]], end[s] + profit[c - start[s], s, l - 1]\}$
+	\End
+\end{codebox}
+
+Recurrence relation represents problem from top to bottom. Considers all profit 
+possibilities at given amount and finds best stock to buy. Then buys the best
+stock as much as it can at given amount. Repeats this cycle till it can't buy anything.
 %%% PROBLEM 2(t) ANSWER END %%%
 }}
 
