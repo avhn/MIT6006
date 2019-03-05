@@ -1,15 +1,31 @@
-#*
-*~
-*.swp
-.DS_Store
-.idea*
-
-venv
-
-*.pyc
-*.pyo
-__pycache__
-
+# latex compiler
 *.aux
 *.log
+
+# emacs
+\#*\#
+
+# vim
+*.swp
+*~
+
+# jetbrains
+.idea
+
+# virtual envs
+*venv
+
+# builds
+build
+dist
+*.egg-info
+
+# bytecode
+__pycache__
+*.pyc
+*.pyo
+*.class
+
+# macOS
+.DS_Store
 
